@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react'
+import { ThemeProvider } from 'styled-components'
+import MainStyles from './styles/mainStyles'
+import Router from './Router'
+import themes from './styles/themes'
+import useThemes from './hooks/useThemes'
+import useAuth from './hooks/useAuth'
 
-function App() {
+const App = () => {
+  const { themeName, setDefaultTheme } = useThemes()
+  const { auth, checkAuthTime, limitAuth } = useAuth()
+  useEffect(() => {
+    setDefaultTheme()
+  }, []) //eslint-disable-line react-hooks/exhaustive-deps
+
+  useEffect(() => {
+    let timer
+    if (auth) {
+      timer = setInterval(() => checkAuthTime(), limitAuth)
+    }
+
+    if (localStorage?.getItem('timeAuth')) {
+      checkAuthTime()
+    }
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [auth]) //eslint-disable-line react-hooks/exhaustive-deps
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={themes[themeName]}>
+      <MainStyles />
+      <Router />
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default App
