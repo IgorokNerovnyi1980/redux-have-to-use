@@ -45,7 +45,7 @@ const Li = styled.p`
 `
 
 export default () => {
-  const t = text['ru'] //for example have to use another language
+  const t = text['en'] //for example have to use another language
 
   return (
     <Wraper>
