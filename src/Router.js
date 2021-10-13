@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Auth from './pages/Auth'
 import Themes from './pages/Themes'
 import Profile from './pages/Profile'
+import Pokemons from './pages/Pokemons'
 import NotFound from './pages/NotFound'
 import useAuth from './hooks/useAuth'
 
@@ -31,6 +32,11 @@ export default () => {
         path="/user"
         exact
         render={() => (auth ? <Profile /> : <Redirect to="/authorization" />)}
+      />
+      <Route
+        path="/poke-api"
+        exact
+        render={() => (auth ? <Pokemons /> : <Redirect to="/authorization" />)}
       />
 
       <Route

@@ -19,6 +19,7 @@ const Content = styled.input`
   padding: ${(p) => p.theme.basePad};
   border: 0.1rem solid ${(p) => p.theme.base};
   border-radius: ${(p) => p.theme.boxRadius};
+  color: ${(p) => p.theme.textContrast};
 `
 
 const Input = ({ title, onChange, style, value }) => {

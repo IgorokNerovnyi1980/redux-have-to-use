@@ -8,23 +8,15 @@ import useAuth from './hooks/useAuth'
 
 const App = () => {
   const { themeName, setDefaultTheme } = useThemes()
-  const { auth, checkAuthTime, limitAuth } = useAuth()
+  const { auth, checkAuthTime } = useAuth()
+
   useEffect(() => {
     setDefaultTheme()
   }, []) //eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
-    let timer
-    if (auth) {
-      timer = setInterval(() => checkAuthTime(), limitAuth)
-    }
-
     if (localStorage?.getItem('timeAuth')) {
       checkAuthTime()
-    }
-
-    return () => {
-      clearInterval(timer)
     }
   }, [auth]) //eslint-disable-line react-hooks/exhaustive-deps
 

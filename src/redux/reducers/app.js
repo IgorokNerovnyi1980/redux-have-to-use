@@ -5,6 +5,7 @@ const initialState = {
     { title: 'home', id: '1', path: '/' },
     { title: 'themes', id: '2', path: '/themes-example' },
     { title: 'profile', id: '3', path: '/user' },
+    { title: 'api', id: '4', path: '/poke-api' },
   ],
   activeTab: '1',
   theme: 'base',

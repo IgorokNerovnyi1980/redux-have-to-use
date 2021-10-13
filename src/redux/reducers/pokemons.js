@@ -1,28 +1,26 @@
 import types from '../types'
 
 const initialState = {
-  isAuth: true,
-  login: '',
-  password: '',
+  list: [],
+  single: {},
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case types.SET_AUTH:
+    case types.SET_POKEMONS:
       return {
         ...state,
-        isAuth: action.isAuth,
+        list: action.payload,
       }
-    case types.CHANGE_AUTH_INPUT:
+    case types.SET_SINGLE_POKEMON:
       return {
         ...state,
-        [action.name]: action.value,
+        single: action.payload,
       }
-    case types.CLEAR_INPUT:
+    case types.CLEAR_POKEMONS:
       return {
-        ...state,
-        login: '',
-        password: '',
+        list: [],
+        single: {},
       }
 
     default:
