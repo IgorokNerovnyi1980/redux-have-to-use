@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
 import text from '../lib/aboutApp.config'
 
@@ -47,38 +47,51 @@ const Li = styled.p`
 export default () => {
   const t = text['en'] //for example have to use another language
 
+  const anchor1 = useRef()
+  const anchor2 = useRef()
+  const anchor3 = useRef()
+
+  const executeScroll = (reff) =>
+    reff.current.scrollIntoView({ behavior: 'smooth' })
+
   return (
     <Wraper>
       <H1>{t.title1}</H1>
-      {t.text1.map(({ title, text }) => (
-        <>
-          {title && <H3 key={title}>{title}</H3>}
-          {text && <p key={text}>{text}</p>}
-        </>
+      {t.text1.map(({ title, text }, i) => (
+        <span key={i}>
+          {title && <H3>{title}</H3>}
+          {text && <p>{text}</p>}
+        </span>
       ))}
-      <TableContent>{t.tableContentTitle1}</TableContent>
-      <TableContent>{t.tableContentTitle2}</TableContent>
-      <TableContent>{t.tableContentTitle3}</TableContent>
-      <H2>{t.tableContentTitle1}</H2>
-      {t.tableContenttext1.map(({ title, text }) => (
-        <>
-          {title && <Li key={title}>{title}</Li>}
-          {text && <p key={text}>{text}</p>}
-        </>
+      <TableContent onClick={() => executeScroll(anchor1)}>
+        {t.tableContentTitle1}
+      </TableContent>
+      <TableContent onClick={() => executeScroll(anchor2)}>
+        {t.tableContentTitle2}
+      </TableContent>
+      <TableContent onClick={() => executeScroll(anchor3)}>
+        {t.tableContentTitle3}
+      </TableContent>
+      <H2 ref={anchor1}>{t.tableContentTitle1}</H2>
+      {t.tableContenttext1.map(({ title, text }, i) => (
+        <span key={i}>
+          {title && <Li>{title}</Li>}
+          {text && <p>{text}</p>}
+        </span>
       ))}
-      <H2>{t.tableContentTitle2}</H2>
-      {t.tableContenttext2.map(({ title, text }) => (
-        <>
-          {title && <H3 key={title}>{title}</H3>}
-          {text && <p key={text}>{text}</p>}
-        </>
+      <H2 ref={anchor2}>{t.tableContentTitle2}</H2>
+      {t.tableContenttext2.map(({ title, text }, i) => (
+        <span key={i}>
+          {title && <H3>{title}</H3>}
+          {text && <p>{text}</p>}
+        </span>
       ))}
-      <H2>{t.tableContentTitle3}</H2>
-      {t.tableContenttext3.map(({ title, text }) => (
-        <>
-          {title && <H3 key={title}>{title}</H3>}
-          {text && <p key={text}>{text}</p>}
-        </>
+      <H2 ref={anchor3}>{t.tableContentTitle3}</H2>
+      {t.tableContenttext3.map(({ title, text }, i) => (
+        <span key={i}>
+          {title && <H3>{title}</H3>}
+          {text && <p>{text}</p>}
+        </span>
       ))}
     </Wraper>
   )

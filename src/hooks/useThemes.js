@@ -3,7 +3,7 @@ import localThemes from '../styles/themes'
 
 export default () => {
   const dispatch = useDispatch()
-  const themeName = useSelector((s) => s.app.theme)
+  const themeName = useSelector((s) => s.theme)
   const colors = ['base', 'contrast', 'text', 'textContrast', 'accent']
   const containers = Object.keys(localThemes)
 

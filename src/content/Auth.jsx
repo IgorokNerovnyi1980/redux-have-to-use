@@ -15,6 +15,7 @@ const Wrapper = styled.div`
 
 const Auth = () => {
   const { inputs, store, onChange, onSubmit } = useAuth()
+
   return (
     <Wrapper>
       {inputs?.length > 0 &&

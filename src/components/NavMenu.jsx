@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import useRouter from '../hooks/useRouter'
 import Tab from './Tab'
 
@@ -12,12 +12,9 @@ const Wrapper = styled.div`
 
 export default () => {
   const router = useRouter()
-  const dispatch = useDispatch()
-  const items = useSelector((s) => s.app.navMenu)
-  const activeTab = useSelector((s) => s.app.activeTab)
+  const items = useSelector((s) => s.navMenu)
 
-  const handleChange = (id, path) => {
-    dispatch({ type: 'CHANGE_TAB', payload: id })
+  const handleChange = (path) => {
     router.push(path)
   }
 
@@ -28,8 +25,8 @@ export default () => {
           <Tab
             key={id}
             title={title}
-            onClick={() => handleChange(id, path)}
-            isActive={activeTab === id}
+            onClick={() => handleChange(path)}
+            isActive={path === router.pathname}
           />
         ))}
     </Wrapper>

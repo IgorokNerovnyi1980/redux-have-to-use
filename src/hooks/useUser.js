@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import useAuth from './useAuth'
 
@@ -30,18 +30,12 @@ export default () => {
     localStorage.removeItem('timeAuth')
   }
 
-  useEffect(() => {
-    let timer = setTimeout(() => getProfile(), 2000)
-    return () => {
-      clearTimeout(timer)
-    }
-  }, []) //eslint-disable-line react-hooks/exhaustive-deps
-
   return {
     auth,
     profile,
     setAuth,
     isProfile,
     onLogout,
+    getProfile,
   }
 }

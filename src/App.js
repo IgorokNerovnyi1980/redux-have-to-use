@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useMemo } from 'react'
 import { ThemeProvider } from 'styled-components'
 import MainStyles from './styles/mainStyles'
 import Router from './Router'
@@ -10,12 +10,12 @@ const App = () => {
   const { themeName, setDefaultTheme } = useThemes()
   const { auth, checkAuthTime } = useAuth()
 
-  useEffect(() => {
+  useMemo(() => {
     setDefaultTheme()
   }, []) //eslint-disable-line react-hooks/exhaustive-deps
 
-  useEffect(() => {
-    if (localStorage?.getItem('timeAuth')) {
+  useMemo(() => {
+    if (localStorage?.getItem('timeAuth') && !auth) {
       checkAuthTime()
     }
   }, [auth]) //eslint-disable-line react-hooks/exhaustive-deps

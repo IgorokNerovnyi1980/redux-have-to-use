@@ -1,49 +1,37 @@
 import React from 'react'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Switch } from 'react-router-dom'
+import PrivateRoute from './components/PrivateRoute'
 import Home from './pages/Home'
 import Auth from './pages/Auth'
 import Themes from './pages/Themes'
 import Profile from './pages/Profile'
 import Pokemons from './pages/Pokemons'
 import NotFound from './pages/NotFound'
-import useAuth from './hooks/useAuth'
 
-export default () => {
-  const { auth } = useAuth()
-  return (
-    <Switch>
-      <Route
-        path="/"
-        exact
-        render={() => (auth ? <Home /> : <Redirect to="/authorization" />)}
-      />
-      <Route
-        path="/authorization"
-        exact
-        render={() => (auth ? <Redirect to="/" /> : <Auth />)}
-      />
+export default () => (
+  <Switch>
+    <PrivateRoute exact path={['/', '/home']}>
+      <Home />
+    </PrivateRoute>
 
-      <Route
-        path="/themes-example"
-        exact
-        render={() => (auth ? <Themes /> : <Redirect to="/authorization" />)}
-      />
-      <Route
-        path="/user"
-        exact
-        render={() => (auth ? <Profile /> : <Redirect to="/authorization" />)}
-      />
-      <Route
-        path="/poke-api"
-        exact
-        render={() => (auth ? <Pokemons /> : <Redirect to="/authorization" />)}
-      />
+    <PrivateRoute exact path="/themes-example">
+      <Themes />
+    </PrivateRoute>
 
-      <Route
-        component={() =>
-          auth ? <NotFound /> : <Redirect to="/authorization" />
-        }
-      />
-    </Switch>
-  )
-}
+    <PrivateRoute exact path="/user">
+      <Profile />
+    </PrivateRoute>
+
+    <PrivateRoute exact path="/poke-api">
+      <Pokemons />
+    </PrivateRoute>
+
+    <PrivateRoute exact revert path="/authorization">
+      <Auth />
+    </PrivateRoute>
+
+    <PrivateRoute>
+      <NotFound />
+    </PrivateRoute>
+  </Switch>
+)

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
+import useRouter from '../hooks/useRouter'
 import NavMenu from './NavMenu'
 import ThemeToggler from './ThemeToggler'
 import reduxLogo from '../assets/img/reduxLogo.png'
@@ -25,14 +26,27 @@ const Wrapper = styled.div`
   align-items: center;
   .header--logo {
     width: 2rem;
+    cursor: pointer;
     animation: ${rotate} 8s linear infinite;
   }
 `
 
 export default () => {
+  const router = useRouter()
+
+  const onRedirect = (path) => {
+    router.push(path)
+  }
+
   return (
     <Wrapper>
-      <img src={reduxLogo} alt="redux logo" className="header--logo" />
+      <img
+        src={reduxLogo}
+        alt="redux logo"
+        className="header--logo"
+        onClick={() => onRedirect('/')}
+      />
+
       <NavMenu />
       <ThemeToggler />
     </Wrapper>

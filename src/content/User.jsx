@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import useUser from '../hooks/useUser'
 import Button from '../components/Button'
@@ -21,8 +21,15 @@ const Avatar = styled.img`
   border-radius: 50%;
 `
 
-const Themes = () => {
-  const { profile, isProfile, onLogout } = useUser()
+const User = () => {
+  const { profile, isProfile, getProfile, onLogout } = useUser()
+
+  useEffect(() => {
+    let timer = setTimeout(() => getProfile(), 2000)
+    return () => {
+      clearTimeout(timer)
+    }
+  }, []) //eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Wrapper>
@@ -53,4 +60,4 @@ const Themes = () => {
   )
 }
 
-export default Themes
+export default User

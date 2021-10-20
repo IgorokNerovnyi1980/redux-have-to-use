@@ -1,7 +1,7 @@
 import types from '../types'
 
 const initialState = {
-  isAuth: true,
+  isAuth: false,
   login: '',
   password: '',
 }

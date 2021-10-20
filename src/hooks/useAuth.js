@@ -5,7 +5,7 @@ export default () => {
   const dispatch = useDispatch()
   const store = useSelector((s) => s.auth)
   const inputs = ['login', 'password']
-  const limitAuth = 30000
+  const limitAuth = 1000 * 60 * 60
   const encryption = {
     first: 'test',
     second: '123',
@@ -24,6 +24,7 @@ export default () => {
   const onSubmit = () => {
     const { login, password } = store
     const { first, second } = encryption
+
     if (login === first && password === second) {
       setAuth(true)
       clearInput()
@@ -46,8 +47,9 @@ export default () => {
       setAuth(false)
       localStorage.removeItem('timeAuth')
       dispatch({ type: 'SET_PROFILE', profile: {} })
+    } else {
+      setAuth(true)
     }
-    setAuth(true)
   }
 
   return {

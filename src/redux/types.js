@@ -1,5 +1,4 @@
 export default {
-  CHANGE_TAB: 'CHANGE_TAB',
   SET_THEME: 'SET_THEME',
   SET_AUTH: 'SET_AUTH',
   SET_PROFILE: 'SET_PROFILE',

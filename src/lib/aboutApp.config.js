@@ -4,7 +4,7 @@ export default {
     text1: [
       {
         title: '',
-        text: 'Это приложение предназначено для учебных целей. Здесь я показываю как использовать  Redux в связке с React. и Да - Вы можете использовать это приложение как шаблон для своих пэт проектов. В данный момент в приложении реализовано 4 паттерна - переключение табов, переключение темы оформления, авторизация  и асинхронное получение данных. Возможно, будут добавлены еще и другие решения.',
+        text: 'Это приложение предназначено для учебных целей. Здесь я показываю как использовать  Redux в связке с React. и Да - Вы можете использовать это приложение как шаблон для своих пэт проектов. В данный момент в приложении реализовано 3 паттерна - переключение темы оформления, авторизация  и асинхронное получение данных. Возможно, будут добавлены еще и другие решения.',
       },
     ],
     tableContentTitle1: 'Основные технологии',
@@ -142,7 +142,7 @@ export default {
     text1: [
       {
         title: '',
-        text: 'This application is intended for training purposes. Here I show how to use Redux in a bundle with React. And yes - you can use this application as a template for your PET projects. At the moment, 4 patterns are implemented in the appendix - switching tabs, switching the theme theme, authorization and asynchronous data obtaining. Perhaps other solutions will be added.',
+        text: 'This application is intended for training purposes. Here I show how to use Redux in a bundle with React. And yes - you can use this application as a template for your PET projects. At the moment, 3 patterns are implemented in the app - switching the theme theme, authorization and asynchronous data obtaining. Perhaps other solutions will be added.',
       },
     ],
     tableContentTitle1: 'Main technologies',

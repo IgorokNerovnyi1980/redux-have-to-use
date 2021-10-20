@@ -1,11 +1,13 @@
 import { combineReducers } from 'redux'
-import app from './app'
+import theme from './theme'
+import navMenu from './navMenu'
 import auth from './auth'
 import user from './user'
 import pokemons from './pokemons'
 
 export default combineReducers({
-  app,
+  theme,
+  navMenu,
   auth,
   user,
   pokemons,
