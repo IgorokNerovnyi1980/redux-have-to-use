@@ -1,5 +1,9 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import {
+  getPokemonList,
+  getPokemonByName,
+} from '../redux/actions/pokemon.action'
 
 export default () => {
   const dispatch = useDispatch()
@@ -7,11 +11,11 @@ export default () => {
   const pokemon = useSelector((s) => s.pokemons.single)
 
   const getSinglePokemon = (name) => {
-    dispatch({ type: 'SAGA_GET_SINGLE_POKEMON', name })
+    getPokemonByName(name)(dispatch)
   }
 
   useEffect(() => {
-    dispatch({ type: 'SAGA_GET_POKEMONS' })
+    getPokemonList()(dispatch)
     return () => dispatch({ type: 'CLEAR_POKEMONS' })
   }, []) //eslint-disable-line react-hooks/exhaustive-deps
 
