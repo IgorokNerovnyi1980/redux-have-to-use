@@ -1,3 +1,8 @@
+https://igoroknerovnyi1980.github.io/redux-have-to-use
+
+login: test
+password: 123
+
 ## About
 
 Greetings !!
