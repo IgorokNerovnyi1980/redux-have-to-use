@@ -1,12 +1,12 @@
 https://igoroknerovnyi1980.github.io/redux-have-to-use
 
-login: test
+login: test; 
 password: 123
 
 ## About
 
 Greetings !!
-This application is intended for training purposes. Here I show how to use Redux in a bundle with React. And yes - you can use this application as a template for your PET projects. At the moment, 4 patterns are implemented in the appendix - switching tabs, switching the theme theme, authorization and asynchronous data obtaining. Perhaps other solutions will be added.
+This application is intended for training purposes. Here I show how to use Redux in a bundle with React. And yes - you can use this application as a template for your PET projects. At the moment, 3 patterns are implemented in the appendix - switching the theme theme, authorization and asynchronous data obtaining. Perhaps other solutions will be added.
 
 - [Main technologies](#main-technologies)
 - [Application structure](#application-structure)
